@@ -1,38 +1,23 @@
-![Once UI (Light)](public/images/cover-light.png#gh-light-mode-only)
-![Once UI (Dark)](public/images/cover-dark.png#gh-dark-mode-only)
+# Jeazy Portfolio
 
-Once UI is a lightweight, versatile design system intended to cover 80% of the needs of all applications. Start building your Next.js app in minutes with: 
-* **A robust token and style system** that simplifies customization and ensures consistency. 
-* **A copy-and-paste component library** that integrates seamlessly into your project.
-* **Interactive documentation** to apply your branding and set component properties.
+Este repositório contém o código-fonte do meu site de portfólio, onde apresento os projetos que desenvolvi e as habilidades que adquiri ao longo da minha carreira como desenvolvedor.
 
-## Documentation
-The documentation is available at [once-ui.com/docs](https://once-ui.com/docs).
+## Sobre
 
-## Authors
-Connect with us on X or LinkedIn.
+O site de portfólio foi criado utilizando Next.js e outras tecnologias modernas para demonstrar meu trabalho em desenvolvimento web e aplicações. Nele, você encontrará uma seleção dos meus projetos mais significativos, que refletem minha experiência e paixão por criar soluções digitais.
 
-Lorant Toth - [X](https://x.com/lorant_one), [LinkedIn](https://www.linkedin.com/in/tothlorant/)  
-Zsofia Komaromi - [X](https://x.com/zsofiakomaromi), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
+## Tecnologias Utilizadas
 
-## Get involved
-- Join the [Once UI Discord server](https://discord.com/invite/5EyAQ4eNdS) to connect with designers, developers and share your projects.
-- Report a [bug](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=bug&template=bug_report.md).
-- Submit a [feature request](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=feature%20request&template=feature_request.md).
+- **Next.js**
+- **React**
+- **Tailwind CSS**
+- **JavaScript**
+- **HTML & CSS**
 
-## License
+## Contato
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Para saber mais sobre meu trabalho ou para entrar em contato, visite [meu site](https://jeazy.com.br) ou envie um e-mail para [jean@dev003@gmail.com](mailto:jean@dev003@gmail.com).
 
-## Figma library
+---
 
-Once UI is also available for Figma.  
-Design and prototype entire products from scratch in hours. Use the same tokens and components as the Next.js design system.
-
-Grab a copy from the [Figma Community](https://figma.com/).
-
-## Deploy your project
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/76DR9Q?referralCode=QW2HBC)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fnextjs-starter&redirect-url=https%3A%2F%2Fonce-ui.com%2Fdocs%2F)
+Obrigado por visitar meu portfólio!
