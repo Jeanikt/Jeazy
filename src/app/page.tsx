@@ -10,7 +10,7 @@ import {
   Icon,
   InlineCode,
 } from "@/once-ui/components";
-import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 
 const textAnimation = `
@@ -264,7 +264,6 @@ export default function Home() {
                 radius="l"
                 border="neutral-medium"
                 borderStyle="solid-1"
-                
                 tabletColumns="1col"
                 mobileColumns="1col"
                 fillWidth
@@ -392,6 +391,28 @@ export default function Home() {
           </Flex>
         </Flex>
       </Flex>
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/21979369780" // Substitua pelo seu número do WhatsApp
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "16px",
+          right: "16px",
+          backgroundColor: "transparent", // Fundo transparente
+          borderRadius: "50%",
+          padding: "12px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          color: "#25D366", // Cor do ícone
+          fontSize: "24px",
+          textAlign: "center",
+          zIndex: 1000,
+        }}
+      >
+        <FaWhatsapp style={{ color: "#25D366" }} />{" "}
+        {/* Define a cor do ícone */}
+      </a>
     </>
   );
 }
