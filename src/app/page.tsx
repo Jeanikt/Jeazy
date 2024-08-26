@@ -21,7 +21,7 @@ const textAnimation = `
   }
   
   .gradient-text {
-    background: linear-gradient(45deg, #00bcd4, #8e2de2); /* Azul ciano a roxo */
+    background: linear-gradient(45deg, #00bcd4, #8e2de2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -61,10 +61,11 @@ const truncateDescription = (
     : description;
 };
 
-export default function Home() {
+export default function Component() {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [workExperience, setWorkExperience] = useState<WorkExperience[]>([]);
+  const [language, setLanguage] = useState<"en" | "pt">("en");
 
   useEffect(() => {
     // Fetch GitHub user data
@@ -125,6 +126,45 @@ export default function Home() {
     }
   };
 
+  const toggleLanguage = () => {
+    setLanguage((prevLang) => (prevLang === "en" ? "pt" : "en"));
+  };
+
+  const downloadResume = () => {
+    const resumeFileName =
+      language === "en"
+        ? "Jean_Carlo_de_Oliveira_Resume.pdf"
+        : "Jean_Carlo_de_Oliveira_Curriculo.pdf";
+    const resumeUrl = `/${resumeFileName}`;
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = resumeFileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const translations = {
+    en: {
+      readDocs: "Read docs",
+      aboutMe: "About Me",
+      aboutMeText:
+        "I'm a passionate Fullstack Developer from Brazil, skilled in both front-end and back-end technologies. I blend technical expertise with a strong design sense to build scalable and visually engaging applications. My goal is to craft seamless user experiences and embrace new challenges with enthusiasm. As a coffee enthusiast, I love fueling my creativity with a great cup of coffee.",
+      workExperience: "Work Experience",
+      sideProjects: "Side Projects",
+      downloadCV: "Download CV",
+    },
+    pt: {
+      readDocs: "Ler documentação",
+      aboutMe: "Sobre Mim",
+      aboutMeText:
+        "Sou um Desenvolvedor Fullstack apaixonado do Brasil, habilidoso em tecnologias front-end e back-end. Combino expertise técnica com um forte senso de design para construir aplicações escaláveis e visualmente atraentes. Meu objetivo é criar experiências de usuário perfeitas e abraçar novos desafios com entusiasmo. Como entusiasta do café, adoro alimentar minha criatividade com uma ótima xícara de café.",
+      workExperience: "Experiência de Trabalho",
+      sideProjects: "Projetos Paralelos",
+      downloadCV: "Baixar CV",
+    },
+  };
+
   return (
     <>
       <style>{textAnimation}</style>
@@ -140,6 +180,14 @@ export default function Home() {
         alignItems="center"
         flex={1}
       >
+        <Flex justifyContent="flex-end" fillWidth gap="m" marginBottom="m">
+          <Button onClick={toggleLanguage} variant="secondary" size="s">
+            {language === "en" ? "PT" : "EN"}
+          </Button>
+          <Button onClick={downloadResume} variant="secondary" size="s">
+            {translations[language].downloadCV}
+          </Button>
+        </Flex>
         <Flex
           as="section"
           overflow="hidden"
@@ -159,72 +207,49 @@ export default function Home() {
             padding="l"
             gap="l"
           >
-            <Flex mobileDirection="column" fillWidth gap="24">
+            <Flex mobileDirection="column" fillWidth gap="24" className="mb-48">
               <Flex
                 position="relative"
                 fillWidth
-                paddingTop="56"
+                paddingTop="16"
                 paddingX="xl"
                 direction="row"
-                alignItems="flex-start" // Alinha o conteúdo do perfil à esquerda
+                alignItems="center" // Alinha os itens verticalmente no centro
                 gap="24"
               >
                 {user && (
-                  <>
-                    <img
-                      src={user.avatar_url}
-                      alt={`${user.name}'s avatar`}
-                      style={{
-                        borderRadius: "50%",
-                        width: "100px",
-                        height: "100px",
-                      }}
-                    />
-                    <Flex direction="column" alignItems="flex-start">
-                      <Heading variant="display-strong-xs" marginTop="s" />
-                      <Heading variant="display-strong-xs">{user.name}</Heading>
-                      <Text variant="body-strong-s" onBackground="neutral-weak">
-                        Creative Developer
-                      </Text>
-                    </Flex>
-                  </>
+                  <img
+                    src={user.avatar_url}
+                    alt={`${user.name}'s avatar`}
+                    style={{
+                      borderRadius: "50%",
+                      width: "300px", // Ajuste o tamanho da imagem conforme necessário
+                      height: "300px", // Ajuste o tamanho da imagem conforme necessário
+                    }}
+                  />
                 )}
-              </Flex>
-              <Flex
-                position="relative"
-                fillWidth
-                gap="24"
-                marginBottom="104"
-                direction="column"
-              >
-                <InlineCode
-                  className="shadow-m"
-                  style={{
-                    width: "fit-content",
-                    padding: "var(--static-space-8) var(--static-space-16)",
-                  }}
+                <Flex
+                  direction="column"
+                  justifyContent="center" // Alinha o texto verticalmente no centro
+                  gap="24"
                 >
-                  Start running{" "}
-                  <span className="brand-on-background-medium">
-                    npm run jeazy
-                  </span>
-                </InlineCode>
-                <Heading variant="display-strong-s">
-                  <span>Hi, I'm Jean 😶‍🌫️</span>
-                  <br />
-                  <span className="gradient-text">Fullstack Developer</span>
-                </Heading>
-                <Button
-                  onClick={scrollToAboutMe}
-                  suffixIcon="chevronRight"
-                  variant="secondary"
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "1px solid #FFFFFF", // Adiciona uma borda para destacar o botão
-                  }}
-                >
-                  Read docs
-                </Button>
+                  <Heading variant="display-strong-s">
+                    <span>Hi, I'm Jean 😶‍🌫️</span>
+                    <br />
+                    <span className="gradient-text">Fullstack Developer</span>
+                  </Heading>
+                  <Button
+                    onClick={scrollToAboutMe}
+                    suffixIcon="chevronRight"
+                    variant="secondary"
+                    style={{
+                      backgroundColor: "transparent",
+                      border: "1px solid #FFFFFF",
+                    }}
+                  >
+                    {translations[language].readDocs}
+                  </Button>
+                </Flex>
               </Flex>
             </Flex>
 
@@ -238,15 +263,11 @@ export default function Home() {
               gap="l"
               padding="l"
             >
-              <Heading variant="display-strong-xs">About Me</Heading>
+              <Heading variant="display-strong-xs">
+                {translations[language].aboutMe}
+              </Heading>
               <Text variant="body-default-m">
-                I’m a passionate Fullstack Developer from Brazil, skilled in
-                both front-end and back-end technologies. I blend technical
-                expertise with a strong design sense to build scalable and
-                visually engaging applications. My goal is to craft seamless
-                user experiences and embrace new challenges with enthusiasm. As
-                a coffee enthusiast, I love fueling my creativity with a great
-                cup of coffee.
+                {translations[language].aboutMeText}
               </Text>
             </Flex>
 
@@ -259,7 +280,9 @@ export default function Home() {
               gap="l"
               padding="l"
             >
-              <Heading variant="display-strong-xs">Work Experience</Heading>
+              <Heading variant="display-strong-xs">
+                {translations[language].workExperience}
+              </Heading>
               <Grid
                 radius="l"
                 border="neutral-medium"
@@ -294,7 +317,7 @@ export default function Home() {
               </Grid>
             </Flex>
 
-            {/* Work Experience Section */}
+            {/* Side Projects Section */}
             <Flex
               as="section"
               fillWidth
@@ -303,9 +326,9 @@ export default function Home() {
               gap="l"
               padding="l"
             >
-              <Heading variant="display-strong-xs">Side Projects</Heading>
-
-              {/* Side Projects Section */}
+              <Heading variant="display-strong-xs">
+                {translations[language].sideProjects}
+              </Heading>
               <Grid
                 radius="l"
                 border="neutral-medium"
@@ -368,7 +391,7 @@ export default function Home() {
               GitHub
             </Button>
             <Button
-              href="https://www.linkedin.com/in/jeanikt"
+              href="https://www.linkedin.com/in/jeanfoliveira"
               size="s"
               variant="tertiary"
             >
@@ -393,25 +416,24 @@ export default function Home() {
       </Flex>
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/21979369780" // Substitua pelo seu número do WhatsApp
+        href="https://wa.me/21979369780"
         target="_blank"
         rel="noopener noreferrer"
         style={{
           position: "fixed",
           bottom: "16px",
           right: "16px",
-          backgroundColor: "transparent", // Fundo transparente
+          backgroundColor: "transparent",
           borderRadius: "50%",
           padding: "12px",
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          color: "#25D366", // Cor do ícone
+          color: "#25D366",
           fontSize: "24px",
           textAlign: "center",
           zIndex: 1000,
         }}
       >
-        <FaWhatsapp style={{ color: "#25D366" }} />{" "}
-        {/* Define a cor do ícone */}
+        <FaWhatsapp style={{ color: "#25D366" }} />
       </a>
     </>
   );
