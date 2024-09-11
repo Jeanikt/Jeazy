@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  Heading,
-  Text,
-  Flex,
-  Button,
-  Grid,
-  Icon,
-  InlineCode,
-} from "@/once-ui/components";
+import { Heading, Text, Flex, Button, Grid, Icon } from "@/once-ui/components";
 import { FaLinkedinIn, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 
@@ -82,7 +74,7 @@ export default function Component() {
       .then((data: Repo[]) => {
         // Filter specific repositories
         const filteredRepos = data.filter((repo) =>
-          ["Flower", "WebCrawler", "Jeazy", "myBazaar"].includes(repo.name)
+          ["Flower", "WebCrawler", "Fiscalis", "myBazaar"].includes(repo.name)
         );
         setRepos(filteredRepos);
       })
@@ -167,7 +159,30 @@ export default function Component() {
 
   return (
     <>
-      <style>{textAnimation}</style>
+      <style>{`
+        ${textAnimation}
+        
+        @media (max-width: 768px) {
+          .mobile-stack {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+          
+          .mobile-full-width {
+            width: 100%;
+          }
+          
+          .mobile-center {
+            justify-content: center;
+          }
+
+          .avatar-image {
+            width: 150px !important;
+            height: 150px !important;
+          }
+        }
+      `}</style>
       <Flex
         style={{
           backgroundImage:
@@ -180,7 +195,13 @@ export default function Component() {
         alignItems="center"
         flex={1}
       >
-        <Flex justifyContent="flex-end" fillWidth gap="m" marginBottom="m">
+        <Flex
+          justifyContent="flex-end"
+          fillWidth
+          gap="m"
+          marginBottom="m"
+          className="mobile-center"
+        >
           <Button onClick={toggleLanguage} variant="secondary" size="s">
             {language === "en" ? "PT" : "EN"}
           </Button>
@@ -207,33 +228,42 @@ export default function Component() {
             padding="l"
             gap="l"
           >
-            <Flex mobileDirection="column" fillWidth gap="24" className="mb-48">
+            <Flex
+              mobileDirection="column"
+              fillWidth
+              gap="24"
+              className="mb-48 mobile-stack"
+            >
               <Flex
                 position="relative"
                 fillWidth
                 paddingTop="16"
                 paddingX="xl"
                 direction="row"
-                alignItems="center" // Alinha os itens verticalmente no centro
+                alignItems="center"
                 gap="24"
+                className="mobile-stack"
               >
                 {user && (
                   <img
                     src={user.avatar_url}
                     alt={`${user.name}'s avatar`}
+                    className="avatar-image"
                     style={{
                       borderRadius: "50%",
-                      width: "300px", // Ajuste o tamanho da imagem conforme necessário
-                      height: "300px", // Ajuste o tamanho da imagem conforme necessário
+                      width: "300px",
+                      height: "300px",
+                      maxWidth: "100%",
                     }}
                   />
                 )}
                 <Flex
                   direction="column"
-                  justifyContent="center" // Alinha o texto verticalmente no centro
+                  justifyContent="center"
                   gap="24"
+                  className="mobile-full-width"
                 >
-                  <Heading variant="display-strong-s">
+                  <Heading variant="display-strong-s" className="mobile-center">
                     <span>Hi, I'm Jean 😶‍🌫️</span>
                     <br />
                     <span className="gradient-text">Fullstack Developer</span>
@@ -333,9 +363,8 @@ export default function Component() {
                 radius="l"
                 border="neutral-medium"
                 borderStyle="solid-1"
-                columns="repeat(3, 1fr)"
-                tabletColumns="1col"
-                mobileColumns="1col"
+                columns="repeat(auto-fit, minmax(250px, 1fr))"
+                gap="m"
                 fillWidth
               >
                 {repos.map((repo) => (
@@ -374,14 +403,19 @@ export default function Component() {
           paddingX="l"
           paddingY="m"
           justifyContent="space-between"
+          className="mobile-stack"
         >
-          <Text variant="body-default-s" onBackground="neutral-weak">
+          <Text
+            variant="body-default-s"
+            onBackground="neutral-weak"
+            className="mobile-center"
+          >
             © {getCurrentYear()} Jeazy, <a></a>
             <Link href="https://github.com/Jeanikt/Jeazy/blob/main/LICENSE">
               MIT License
             </Link>
           </Text>
-          <Flex gap="12">
+          <Flex gap="12" className="mobile-center">
             <Button
               href="https://github.com/Jeanikt/Jeazy.git"
               prefixIcon="github"
