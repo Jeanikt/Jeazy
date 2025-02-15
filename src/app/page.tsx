@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, ExternalLink, MessageCircle, Globe } from "lucide-react";
+import { ExternalLink, MessageCircle, Globe } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import conveter from "./img/converter.png";
 import elephantgun from "./img/elephantgun.png";
 import uniconnect from "./img/uniconnect.png";
 import botVagas from "./img/bot-vagas.png";
 import hotelManagement from "./img/hotel-management.png";
-import openzap from "./img/openzap.png";
+
 interface Project {
   id: string;
   title: string;
@@ -71,7 +71,7 @@ export default function Home() {
       description: isPortuguese
         ? "Uma plataforma abrangente de gerenciamento de mensagens do WhatsApp desenvolvida com Node.js, Express, React e Baileys. Possui recursos avançados de automação e um frontend interativo."
         : "A comprehensive WhatsApp message management platform developed with Node.js, Express, React, and Baileys. Features advanced automation capabilities and an interactive frontend.",
-      image: openzap,
+      image: "/placeholder.svg",
       repoUrl: "https://github.com/Jeanikt/openzap",
     },
     {
@@ -94,21 +94,18 @@ export default function Home() {
 
       <div className="fixed top-0 left-0 right-0 p-4 flex justify-between items-center z-50">
         <div className="text-sm tracking-wider animate-fade-in">JEAZY.DEV</div>
-        <div className="flex items-center space-x-4">
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
           <button
             onClick={toggleLanguage}
-            className="p-2 hover:bg-gray-800 rounded-full transition-colors"
+            className="flex items-center space-x-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full transition-colors"
             aria-label={
               isPortuguese ? "Switch to English" : "Mudar para Português"
             }
           >
-            <Globe className="w-6 h-6" />
-          </button>
-          <button
-            className="p-2 lg:hidden hover:bg-gray-800 rounded-full transition-colors"
-            aria-label="Open menu"
-          >
-            <Menu className="w-6 h-6" />
+            <Globe className="w-5 h-5" />
+            <span className="text-sm">
+              {isPortuguese ? "Switch to English" : "Mudar para Português"}
+            </span>
           </button>
         </div>
         <nav className="hidden lg:flex space-x-6">
@@ -166,7 +163,7 @@ export default function Home() {
                 LinkedIn
               </a>
               <a
-                href="mailto:jean@gpstech.com.br"
+                href="mailto:jeandev003@gmail.com"
                 className="flex items-center text-gray-400 hover:text-white transition-colors"
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
@@ -394,7 +391,7 @@ export default function Home() {
                   className="flex items-center text-gray-400 hover:text-white transition-colors"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Email: jean@gpstech.com.br
+                  Email: jeandev003@gmail.com
                 </a>
                 <a
                   href="https://wa.me/5521979369780"
