@@ -197,7 +197,7 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in-up">
               <a
-                href="/curriculo-jean-carlo.pdf"
+                href={isPortuguese ? "/curriculo.pdf" : "/resume.pdf"}
                 download
                 className="flex items-center text-gray-400 hover:text-white transition-colors bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full"
               >
@@ -492,7 +492,7 @@ export default function Home() {
               </p>
               <div className="space-y-2">
                 <a
-                  href="/curriculo-jean-carlo.pdf"
+                  href={isPortuguese ? "/curriculo.pdf" : "/resume.pdf"}
                   download
                   className="flex items-center text-gray-400 hover:text-white transition-colors"
                 >
