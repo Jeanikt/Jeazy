@@ -9,9 +9,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jean Carlo de Oliveira | Senior Software Engineer",
+  title: "Jean Carlo de Oliveira | Software Engineer",
   description:
-    "Senior Software Engineer specializing in full-stack development, VoIP integrations, and WhatsApp automation. Experienced in Node.js, React, .NET, PHP, and Laravel.",
+    "Software Engineer specializing in full-stack development, VoIP integrations, and WhatsApp automation. Experienced in Node.js, React, .NET, PHP, and Laravel.",
   keywords: [
     "Software Engineer",
     "Full Stack Developer",
@@ -29,25 +29,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://jeazy.vercel.app",
-    title: "Jean Carlo de Oliveira | Senior Software Engineer",
+    title: "Jean Carlo de Oliveira | Software Engineer",
     description:
-      "Senior Software Engineer specializing in full-stack development, VoIP integrations, and WhatsApp automation.",
+      "Software Engineer specializing in full-stack development, VoIP integrations, and WhatsApp automation.",
     siteName: "Jean Carlo de Oliveira Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Jean Carlo de Oliveira - Senior Software Engineer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jean Carlo de Oliveira | Senior Software Engineer",
+    title: "Jean Carlo de Oliveira | Software Engineer",
     description:
-      "Senior Software Engineer specializing in full-stack development, VoIP integrations, and WhatsApp automation.",
-    images: ["/og-image.png"],
+      "Software Engineer specializing in full-stack development, VoIP integrations, and WhatsApp automation.",
   },
   robots: {
     index: true,
